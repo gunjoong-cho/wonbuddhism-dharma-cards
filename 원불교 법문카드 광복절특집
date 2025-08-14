@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>원불교 법문카드</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .dharma-card {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card-header {
+            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            50% { transform: translateX(100%) translateY(100%); }
+            100% { transform: translateX(-100%) translateY(-100%); }
+        }
+        
+        .date-badge {
+            background: rgba(255, 255, 255, 0.9);
+            color: #666;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .special-event {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-title {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-body {
+            padding: 30px 25px;
+        }
+        
+        .dharma-symbol {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .circle-symbol {
+            width: 80px;
+            height: 80px;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #f8f9ff, #e8ecff);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .circle-symbol::before {
+            content: "";
+        }
+        
+        .dharma-text {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dharma-text::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 60px;
+            color: rgba(102, 126, 234, 0.3);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .main-quote {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #2c3e50;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .sub-text {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .reflection {
+            background: rgba(255, 248, 220, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #ffd700;
+            margin-bottom: 20px;
+        }
+        
+        .reflection-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #8b4513;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .reflection-title::before {
+            content: "💭";
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .reflection-text {
+            font-size: 14px;
+            color: #654321;
+            line-height: 1.5;
+        }
+        
+        .source {
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+            font-weight: 500;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .footer-symbol {
+            font-size: 16px;
+            margin: 0 10px;
+            color: #667eea;
+        }
+        
+        @media (max-width: 480px) {
+            .dharma-card {
+                margin: 10px;
+            }
+            
+            .main-title {
+                font-size: 20px;
+            }
+            
+            .main-quote {
+                font-size: 16px;
+            }
+            
+            .card-body {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dharma-card">
+        <div class="card-header">
+            <div class="date-badge">2024년 8월 13일</div>
+            <div class="special-event">🇰🇷 광복절 특집 🇰🇷</div>
+            <h1 class="main-title">일원상의 진리로 나라를 사랑하는 길</h1>
+        </div>
+        
+        <div class="card-body">
+            <div class="dharma-symbol">
+                <div class="circle-symbol"></div>
+                <div style="font-size: 14px; color: #666; font-weight: 500;">일원상(一圓相)</div>
+            </div>
+            
+            <div class="dharma-text">
+                <div class="main-quote">
+                    "자기 한 몸만을 위하지 말고<br>
+                    가정을 위하고, 사회를 위하고,<br>
+                    국가를 위하고, 세계를 위하는<br>
+                    큰 뜻을 품으라"
+                </div>
+                <div class="sub-text">
+                    - 정산종사법어 「국운편」 -
+                </div>
+            </div>
+            
+            <div class="reflection">
+                <div class="reflection-title">오늘의 실천</div>
+                <div class="reflection-text">
+                    79년 전 오늘, 우리 조상들이 되찾은 광복의 기쁨을 기억하며, 나 혼자만의 작은 이익이 아닌 우리 모두의 큰 행복을 위해 무엇을 할 수 있을까요? 일원상의 가르침처럼, 모든 것이 하나로 연결되어 있음을 깨달아 이웃과 나라를 사랑하는 마음으로 하루를 시작해보세요.
+                </div>
+            </div>
+            
+            <div class="source">
+                원불교 정전 · 교전<br>
+                "처처불상 사사불공"의 정신으로
+            </div>
+        </div>
+        
+        <div class="footer">
+            <span class="footer-symbol">◯</span>
+            마음을 비우고 지혜를 채우는 한 주 되세요
+            <span class="footer-symbol">◯</span>
+        </div>
+    </div>
+</body>
+</html>
