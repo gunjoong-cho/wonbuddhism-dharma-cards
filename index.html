@@ -18,38 +18,9 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
-        }
-        
-        .controls {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .new-card-btn {
-            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 100%);
-            border: none;
-            color: #2c3e50;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(255, 154, 158, 0.3);
-            transition: all 0.3s ease;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        
-        .new-card-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(255, 154, 158, 0.4);
-        }
-        
-        .new-card-btn:active {
-            transform: translateY(0);
         }
         
         .dharma-card {
@@ -157,6 +128,10 @@
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
+        }
+        
+        .circle-symbol::before {
+            content: "";
         }
         
         .dharma-text {
@@ -274,15 +249,11 @@
     </style>
 </head>
 <body>
-    <div class="controls">
-        <button class="new-card-btn" onclick="generateNewCard()">🔄 새로운 법문카드</button>
-    </div>
-    
-    <div class="dharma-card" id="dharmaCard">
+    <div class="dharma-card">
         <div class="card-header">
-            <div class="date-badge" id="dateBadge">2024년 8월 14일</div>
-            <div class="special-event" id="specialEvent">🙏 오늘의 법문 🙏</div>
-            <h1 class="main-title" id="mainTitle">일원상의 진리로 나라를 사랑하는 길</h1>
+            <div class="date-badge">2024년 8월 13일</div>
+            <div class="special-event">🇰🇷 광복절 특집 🇰🇷</div>
+            <h1 class="main-title">일원상의 진리로 나라를 사랑하는 길</h1>
         </div>
         
         <div class="card-body">
@@ -292,21 +263,21 @@
             </div>
             
             <div class="dharma-text">
-                <div class="main-quote" id="mainQuote">
+                <div class="main-quote">
                     "자기 한 몸만을 위하지 말고<br>
                     가정을 위하고, 사회를 위하고,<br>
                     국가를 위하고, 세계를 위하는<br>
                     큰 뜻을 품으라"
                 </div>
-                <div class="sub-text" id="subText">
+                <div class="sub-text">
                     - 정산종사법어 「국운편」 -
                 </div>
             </div>
             
             <div class="reflection">
                 <div class="reflection-title">오늘의 실천</div>
-                <div class="reflection-text" id="reflectionText">
-                    나 혼자만의 작은 이익이 아닌 우리 모두의 큰 행복을 위해 무엇을 할 수 있을까요? 일원상의 가르침처럼, 모든 것이 하나로 연결되어 있음을 깨달아 이웃과 사회를 사랑하는 마음으로 하루를 시작해보세요.
+                <div class="reflection-text">
+                    79년 전 오늘, 우리 조상들이 되찾은 광복의 기쁨을 기억하며, 나 혼자만의 작은 이익이 아닌 우리 모두의 큰 행복을 위해 무엇을 할 수 있을까요? 일원상의 가르침처럼, 모든 것이 하나로 연결되어 있음을 깨달아 이웃과 나라를 사랑하는 마음으로 하루를 시작해보세요.
                 </div>
             </div>
             
@@ -322,95 +293,5 @@
             <span class="footer-symbol">◯</span>
         </div>
     </div>
-
-    <script>
-        const dharmaCards = [
-            {
-                title: "일원상의 진리로 나라를 사랑하는 길",
-                quote: "자기 한 몸만을 위하지 말고<br>가정을 위하고, 사회를 위하고,<br>국가를 위하고, 세계를 위하는<br>큰 뜻을 품으라",
-                source: "정산종사법어 「국운편」",
-                reflection: "나 혼자만의 작은 이익이 아닌 우리 모두의 큰 행복을 위해 무엇을 할 수 있을까요? 일원상의 가르침처럼, 모든 것이 하나로 연결되어 있음을 깨달아 이웃과 사회를 사랑하는 마음으로 하루를 시작해보세요.",
-                event: "🙏 오늘의 법문 🙏"
-            },
-            {
-                title: "마음공부의 참된 의미",
-                quote: "마음이 움직이지 않으면<br>산이 무너져도 놀라지 않고,<br>마음이 흔들리지 않으면<br>바다가 뒤집어져도 두려워하지 않는다",
-                source: "소태산 대종사 법어",
-                reflection: "오늘 하루 동안 내 마음이 어떤 일에 흔들렸는지 돌아보고, 그 순간에 일원상의 진리를 떠올려 마음의 중심을 잡아보세요. 작은 일에도 동요하지 않는 평정심을 기르는 것이 진정한 수행입니다.",
-                event: "🧘‍♀️ 마음수행 🧘‍♀️"
-            },
-            {
-                title: "은혜와 보은의 도리",
-                quote: "하늘과 땅, 부모, 동포, 법률의<br>사은에 보답하고자 하는 마음이<br>모든 도덕과 종교의<br>근본이 된다",
-                source: "원불교 사은",
-                reflection: "오늘 받은 은혜들을 하나씩 떠올려보세요. 맑은 공기, 따뜻한 햇살, 가족의 사랑, 이웃의 도움... 이 모든 것에 감사하며 작은 실천으로 보답하는 하루가 되길 바랍니다.",
-                event: "🙏 사은 감사 🙏"
-            },
-            {
-                title: "무시선과 유시선의 조화",
-                quote: "때를 따라 하는 것과<br>때를 가리지 않고 하는 것을<br>둘 다 잘해야<br>참된 수행자라 할 수 있다",
-                source: "정산종사 법어",
-                reflection: "바쁜 일상 속에서도 잠깐의 고요한 시간을 만들어보세요. 그리고 평범한 일들을 할 때도 깨어있는 마음으로 정성을 다해보세요. 이것이 바로 생활 속의 수행입니다.",
-                event: "⚖️ 생활수행 ⚖️"
-            },
-            {
-                title: "자력양성과 타력이용",
-                quote: "자기 힘을 기르되<br>남의 도움도 받고,<br>남을 도우되<br>자기 성장도 게을리하지 말라",
-                source: "소태산 대종사 법어",
-                reflection: "혼자서 할 수 있는 일과 도움이 필요한 일을 구분해보세요. 겸손하게 배우며 또한 나눌 수 있는 것을 찾아 실천해보세요. 서로 도우며 함께 성장하는 것이 원불교의 정신입니다.",
-                event: "🤝 상생상익 🤝"
-            },
-            {
-                title: "정신개벽의 시대정신",
-                quote: "물질이 개벽되니<br>정신을 개벽하자.<br>정신이 개벽되어야<br>새로운 세상이 열린다",
-                source: "소태산 대종사 개교표어",
-                reflection: "오늘 하루 나의 고정관념이나 편견은 없었는지 돌아보세요. 새로운 관점으로 세상을 바라보고, 열린 마음으로 변화에 적응하며, 더 나은 내일을 만들어가는 마음가짐을 가져보세요.",
-                event: "🌟 정신개벽 🌟"
-            }
-        ];
-
-        function getCurrentDate() {
-            const today = new Date();
-            const year = today.getFullYear();
-            const month = today.getMonth() + 1;
-            const day = today.getDate();
-            return `${year}년 ${month}월 ${day}일`;
-        }
-
-        function generateNewCard() {
-            const randomIndex = Math.floor(Math.random() * dharmaCards.length);
-            const card = dharmaCards[randomIndex];
-            
-            // 카드 애니메이션을 위해 페이드아웃
-            const cardElement = document.getElementById('dharmaCard');
-            cardElement.style.opacity = '0';
-            cardElement.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                // 내용 업데이트
-                document.getElementById('dateBadge').textContent = getCurrentDate();
-                document.getElementById('specialEvent').innerHTML = card.event;
-                document.getElementById('mainTitle').textContent = card.title;
-                document.getElementById('mainQuote').innerHTML = card.quote;
-                document.getElementById('subText').innerHTML = `- ${card.source} -`;
-                document.getElementById('reflectionText').textContent = card.reflection;
-                
-                // 페이드인 애니메이션
-                cardElement.style.opacity = '1';
-                cardElement.style.transform = 'translateY(0)';
-                
-                // 애니메이션 클래스 재적용
-                cardElement.style.animation = 'none';
-                setTimeout(() => {
-                    cardElement.style.animation = 'fadeInUp 0.8s ease-out';
-                }, 10);
-            }, 300);
-        }
-
-        // 페이지 로드 시 오늘 날짜로 초기화
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('dateBadge').textContent = getCurrentDate();
-        });
-    </script>
 </body>
 </html>
